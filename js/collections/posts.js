@@ -1,0 +1,1 @@
+var app = app || {};var PostsCollection = Backbone.Collection.extend({  model: app.Post});app.Posts = new PostsCollection();

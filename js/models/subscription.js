@@ -1,0 +1,1 @@
+var app = app || {};app.Subscription = Backbone.Model.extend({  defaults: {    url: ''  }});
