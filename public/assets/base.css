@@ -2,3 +2,4 @@
 .buffer {margin: 10px 0}
 .rd-subscribe-popup {top: 35px; min-width: 115%; max-width: 120%; padding: 9px;}
 .rd-close {margin-top: -12px; margin-right: -7px;}
+#login, #home {display:none;}
