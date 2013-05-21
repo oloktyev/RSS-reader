@@ -9,7 +9,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 module.exports = function(app) {
-    app.get('/', ensureAuthenticated);
+    app.get('/');
 
     app.get('/auth/google', passport.authenticate('google'));
 
@@ -22,7 +22,7 @@ module.exports = function(app) {
         res.redirect('/');
     });
 
-    app.get('/data', ensureAuthenticated, data.findAll);
+    app.get('/data', data.findAll);
 
-    app.get('/data/:id', ensureAuthenticated, data.findById);
+    app.get('/data/:id', data.findById);
 }

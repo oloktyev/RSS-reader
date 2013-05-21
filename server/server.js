@@ -17,9 +17,9 @@ app.configure(function () {
     app.use(express.bodyParser());
     //app.use(express.methodOverride());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: 'auth-google' }));
-    app.use(passport.initialize());
-    app.use(passport.session());
+    //app.use(express.session({ secret: 'auth-google' }));
+    //app.use(passport.initialize());
+    //app.use(passport.session());
     app.use(app.router);
     app.use(express.static('../public'));
 });
