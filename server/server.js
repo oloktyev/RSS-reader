@@ -5,7 +5,7 @@ var express = require('express'),
     auth = require('./auth'),
     router = require('./router');
 
-var app = express();
+var app = module.exports = express();
 
 auth.configure();
 
