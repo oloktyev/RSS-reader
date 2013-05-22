@@ -3,3 +3,5 @@
 .rd-subscribe-popup {top: 35px; min-width: 115%; max-width: 120%; padding: 9px;}
 .rd-close {margin-top: -12px; margin-right: -7px;}
 #login, #home {display:none;}
+.rd-logout-btn .fsm {display: none;}
+.rd-logout-btn .pluginLoginButton>div {display: inline-block;}
