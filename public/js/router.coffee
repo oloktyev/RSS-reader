@@ -3,8 +3,8 @@ define([
         'jquery'
         'underscore'
         'backbone',
-        '/views/homeView',
-        '/views/loginView'
+        'views/homeView',
+        'views/loginView'
 ], ($, _, Backbone, Home, Login) ->
     
     AppRouter = Backbone.Router.extend({
@@ -82,7 +82,7 @@ define([
             $('#home').hide()
         );
         app_router.on('route:defaultRoute', (actions) ->
-            checkAuthorization.call(this)
+            #checkAuthorization.call(this)
         )
         
         Backbone.history.start()

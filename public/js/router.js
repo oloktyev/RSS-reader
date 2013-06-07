@@ -70,13 +70,11 @@
       */
 
       app_router.on('route:showLogin', function() {
-        //checkAuthorization.call(this);
+        checkAuthorization.call(this);
         $('#login').show();
         return $('#home').hide();
       });
-      app_router.on('route:defaultRoute', function(actions) {
-        //return checkAuthorization.call(this);
-      });
+      app_router.on('route:defaultRoute', function(actions) {});
       return Backbone.history.start();
     };
     return {

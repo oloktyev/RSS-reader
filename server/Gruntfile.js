@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                   join: true
               },
               files: {
-                "../public/js/coffee.js": "../public/js/**/*.coffee"
+                "../public/js/**/coffee.js": "../public/js/**/*.coffee"
               }
             },
             convertJs: { //convert each *.coffee file in js folder into appropriate *.js file
@@ -37,13 +37,21 @@ module.exports = function(grunt) {
                 src: ['*.coffee'],
                 dest: '../public/js/',
                 ext: '.js'
+            },
+            convertViewJs: { //convert each *.coffee file in js folder into appropriate *.js file
+                expand: true,
+                flatten: true,
+                cwd: '../public/js/views/',
+                src: ['*.coffee'],
+                dest: '../public/js/views/',
+                ext: '.js'
             }
         },
         
         watch: {
             concat: {
                 files: '../public/js/**/*.coffee',
-                tasks: ['coffee:convertJs', 'reload']  // Можно несколько: ['lint', 'concat']
+                tasks: ['coffee:convertJs', 'coffee:convertViewJs', 'reload']  // Можно несколько: ['lint', 'concat']
             }
         },
         
