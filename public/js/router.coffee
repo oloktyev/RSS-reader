@@ -2,8 +2,10 @@
 define([
         'jquery'
         'underscore'
-        'backbone'
-], ($, _, Backbone) ->
+        'backbone',
+        '/views/homeView',
+        '/views/loginView'
+], ($, _, Backbone, Home, Login) ->
     
     AppRouter = Backbone.Router.extend({
         routes: {
@@ -12,6 +14,7 @@ define([
         }
     });
     
+    ###
     checkAuthorization = ->
         self = this;
         
@@ -60,6 +63,9 @@ define([
                 self.navigate('login', {trigger: true})
 
         undefined
+        
+        
+        ###
     initialize = ->
         app_router = new AppRouter;
         ### 
@@ -70,7 +76,7 @@ define([
         });
         ###
         
-        app_router.on('route:showLogin', ->
+        app_router.on('route:showLogin', ->       
             checkAuthorization.call(this)
             $('#login').show()
             $('#home').hide()

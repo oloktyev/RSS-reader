@@ -20,13 +20,46 @@ module.exports = function(grunt) {
             }
         },
         
+        coffee: {
+            all: {
+              options: {
+                  separator: ';',
+                  join: true
+              },
+              files: {
+                "../public/js/coffee.js": "../public/js/**/*.coffee"
+              }
+            },
+            convertJs: { //convert each *.coffee file in js folder into appropriate *.js file
+                expand: true,
+                flatten: true,
+                cwd: '../public/js/',
+                src: ['*.coffee'],
+                dest: '../public/js/',
+                ext: '.js'
+            }
+        },
         
         watch: {
             concat: {
-                files: '<%= concat.main.src %>',
-                tasks: ['concat', 'uglify']  // Можно несколько: ['lint', 'concat']
+                files: '../public/js/**/*.coffee',
+                tasks: ['coffee:convertJs', 'reload']  // Можно несколько: ['lint', 'concat']
             }
-        }
+        },
+        
+        open: {
+            all: {
+                // Gets the port from the connect configuration
+                path: 'http://localhost:<%= reload.port%>'
+            }
+        },
+        
+        reload: {
+            port: 3000,
+            proxy: {
+                host: 'localhost',
+            }
+        },
     });
 
     // Загрузка плагинов, установленных с помощью npm install
@@ -34,9 +67,9 @@ module.exports = function(grunt) {
 
     // Задача по умолчанию
     grunt.registerTask('default', ['concat', 'uglify']);
-    grunt.registerTask('debug', ['concat']);
     grunt.registerTask('server', 'Start a custom web server', function() {
         grunt.log.writeln('Started web server on port 3000');
         require('./server.js');
     });
+    grunt.registerTask('debug', ['server', 'watch']);
 };
