@@ -1,9 +1,27 @@
 ﻿"use strict";
-
-var express = require('express'),
+var http = require("http"),
+    sys = require("sys"),
+    url = require("url"),
+    qs = require("querystring"),
+    express = require('express'),
     passport = require('passport'),
     auth = require('./auth'),
     router = require('./router');
+
+var ITEMS_BACKLOG = 20;
+
+var urlMap = {
+  '/real_time_feed' : function (req, res) {
+    var since = parseInt(qs.parse(url.parse(req.url).query).since, 10);
+    feed.query(since, function (data) {
+      res.simpleJSON(200, data);
+    });
+  },
+  '/send_feed_item' : function (req, res, json) {
+    feed.appendMessage( json );
+    res.simpleJSON(200, {});
+  }
+}
 
 var app = module.exports = express();
 

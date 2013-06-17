@@ -76,12 +76,14 @@ define([
         });
         ###
         
-        app_router.on('route:showLogin', ->       
+        app_router.on('route:showLogin', ->
             checkAuthorization.call(this)
             $('#login').show()
             $('#home').hide()
         );
         app_router.on('route:defaultRoute', (actions) ->
+            mainView = new Home();
+            mainView.render();
             #checkAuthorization.call(this)
         )
         

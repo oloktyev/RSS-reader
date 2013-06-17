@@ -14,8 +14,16 @@
         exports: '_'
       }
     }
-  }, require(['app'], function(App) {
-    return App.initialize();
-  }));
+  });
+
+  require(['jquery', 'backbone', 'underscore', 'router', 'views/homeView', 'views/SubscribeView'], function($, Backbone, _, Router, HomeView, SubscribeView) {
+    var home;
+
+    home = new HomeView({
+      el: $('#home')
+    });
+    home.addElements(new SubscribeView());
+    return home.render();
+  });
 
 }).call(this);

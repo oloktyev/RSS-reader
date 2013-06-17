@@ -1,6 +1,7 @@
 (function() {
   define(['jquery', 'underscore', 'backbone', 'views/homeView', 'views/loginView'], function($, _, Backbone, Home, Login) {
     var AppRouter, initialize;
+
     AppRouter = Backbone.Router.extend({
       routes: {
         "login": "showLogin",
@@ -60,6 +61,7 @@
 
     initialize = function() {
       var app_router;
+
       app_router = new AppRouter;
       /* 
       app_router.on('showLogin', function(){
@@ -74,7 +76,12 @@
         $('#login').show();
         return $('#home').hide();
       });
-      app_router.on('route:defaultRoute', function(actions) {});
+      app_router.on('route:defaultRoute', function(actions) {
+        var mainView;
+
+        mainView = new Home();
+        return mainView.render();
+      });
       return Backbone.history.start();
     };
     return {

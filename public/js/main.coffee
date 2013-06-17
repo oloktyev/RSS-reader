@@ -22,11 +22,13 @@ require.config({
             exports: '_'
         }
     }
-}
-require [
-  # Load our app module and pass it to our definition function
-  'app',
-], (App) ->
-    # The "app" dependency is passed in as "App"
-    App.initialize();
+})
+
+require(['jquery', 'backbone', 'underscore', 'router', 'views/homeView', 'views/SubscribeView'],
+($, Backbone, _, Router, HomeView, SubscribeView) ->
+    #Router.initialize();
+    
+    home = new HomeView({el: $('#home')})
+    home.addElements(new SubscribeView())
+    home.render()
 )

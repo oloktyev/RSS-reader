@@ -1,0 +1,1 @@
+define(['backbone'], (Backboone)->    Subscription = Backbone.Model.extend({        defaults: {            url: ''        }    }))
